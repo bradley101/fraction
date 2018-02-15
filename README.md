@@ -1,4 +1,6 @@
 ## fraction
+[![Github Pre-Releases](https://img.shields.io/github/downloads-pre/atom/atom/latest/total.svg?style=plastic)](https://pypi.python.org/pypi/Fraction/0.3)
+
 fraction is a _Python_ module that is designed for fractional values **_numerator/denominator_**
 
 ### Installation
