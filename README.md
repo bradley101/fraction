@@ -48,3 +48,4 @@ $ sudo pip install Fraction
 >>> div_ab = a / b
 >>> div_ab.numerator, div_ab.denominator
 (3, 5)
+```
