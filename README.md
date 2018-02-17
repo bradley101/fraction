@@ -55,6 +55,14 @@ $ sudo pip install Fraction
 >>> div_ab.numerator, div_ab.denominator
 (3, 5)
 ```
+### Comparison/Relational operations
+##### Supports comparison operations [<, <=, >, >=, ==, !=] (returns boolean)
+```
+>>> a < b
+True
+>>> a == Fraction(7, 10)
+False
+```
 ### For debugging 
 ##### Supports str() and repr() built in objects methods
 ```
