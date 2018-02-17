@@ -58,3 +58,12 @@ $ sudo pip install Fraction
 >>> div_ab.numerator, div_ab.denominator
 (3, 5)
 ```
+### For debugging 
+##### Supports str() and repr() built in objects methods
+```
+>>> a = Fraction()
+>>> print a
+0/1
+>>> a
+Fraction: 0/1
+```
