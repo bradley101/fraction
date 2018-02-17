@@ -35,7 +35,37 @@ class Fraction:
 
     def __div__(self, other_fraction):
         return self.__mul__(Fraction.reciprocal(other_fraction))
-        
+
+    def __lt__(self, other_fraction):
+        a_n, a_d, b_n, b_d = self.numerator, self.denominator, other_fraction.numerator, other_fraction.denominator
+        denom_lcm = (a_d * b_d) / self._gcd(a_d, b_d)
+        return True if a_n * (denom_lcm / a_d) < b_n * (denom_lcm / b_d) else False
+
+    def __gt__(self, other_fraction):
+        a_n, a_d, b_n, b_d = self.numerator, self.denominator, other_fraction.numerator, other_fraction.denominator
+        denom_lcm = (a_d * b_d) / self._gcd(a_d, b_d)
+        return True if a_n * (denom_lcm / a_d) > b_n * (denom_lcm / b_d) else False
+
+    def __le__(self, other_fraction):
+        a_n, a_d, b_n, b_d = self.numerator, self.denominator, other_fraction.numerator, other_fraction.denominator
+        denom_lcm = (a_d * b_d) / self._gcd(a_d, b_d)
+        return True if a_n * (denom_lcm / a_d) <= b_n * (denom_lcm / b_d) else False
+
+    def __ge__(self, other_fraction):
+        a_n, a_d, b_n, b_d = self.numerator, self.denominator, other_fraction.numerator, other_fraction.denominator
+        denom_lcm = (a_d * b_d) / self._gcd(a_d, b_d)
+        return True if a_n * (denom_lcm / a_d) >= b_n * (denom_lcm / b_d) else False
+
+    def __eq__(self, other_fraction):
+        a_n, a_d, b_n, b_d = self.numerator, self.denominator, other_fraction.numerator, other_fraction.denominator
+        denom_lcm = (a_d * b_d) / self._gcd(a_d, b_d)
+        return True if a_n * (denom_lcm / a_d) == b_n * (denom_lcm / b_d) else False
+
+    def __ne__(self, other_fraction):
+        a_n, a_d, b_n, b_d = self.numerator, self.denominator, other_fraction.numerator, other_fraction.denominator
+        denom_lcm = (a_d * b_d) / self._gcd(a_d, b_d)
+        return True if a_n * (denom_lcm / a_d) != b_n * (denom_lcm / b_d) else False
+    
     def __str__(self):
     	return '{}/{}'.format(self.numerator, self.denominator)
 

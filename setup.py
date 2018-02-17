@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 setup(
 	name='Fraction',
-	version='0.4.1',
+	version='1.1.0',
 	packages=find_packages(),
 	scripts=['fraction/Fraction.py'],
 	url="https://bradley101.github.io/fraction",
