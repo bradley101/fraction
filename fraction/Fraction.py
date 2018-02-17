@@ -35,3 +35,9 @@ class Fraction:
 
     def __div__(self, other_fraction):
         return self.__mul__(Fraction.reciprocal(other_fraction))
+        
+    def __str__(self):
+    	return '{}/{}'.format(self.numerator, self.denominator)
+
+    def __repr__(self):
+        return 'Fraction: {}/{}'.format(self.numerator, self.denominator)
