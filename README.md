@@ -19,6 +19,7 @@ $ sudo pip install Fraction
 ##### Creates a fraction equal to 3/10
 ```
 >>> a = Fraction(3, 10)
+>>> b = Fraction(1, 2)
 
 # Get numerator/denominator
 >>> a.numerator, a.denominator
@@ -32,28 +33,24 @@ $ sudo pip install Fraction
 ```
 ##### Perform addition of Fraction objects (returns a Fraction object)
 ```
->>> b = Fraction(1, 2)
 >>> sum_ab = a + b
 >>> sum_ab.numerator, sum_ab.denominator
 (4, 5)
 ```
 ##### Perform subtraction of Fraction objects (returns a Fraction object)
 ```
->>> b = Fraction(1, 2)
 >>> diff_ab = a - b
 >>> diff_ab.numerator, diff_ab.denominator
 (-1, 5)
 ```
 ##### Perform multiplication of Fraction objects (returns a Fraction object)
 ```
->>> b = Fraction(1, 2)
 >>> mul_ab = a * b
 >>> mul_ab.numerator, mul_ab.denominator
 (3, 20)
 ```
 ##### Perform div of Fraction objects (returns a Fraction object)
 ```
->>> b = Fraction(1, 2)
 >>> div_ab = a / b
 >>> div_ab.numerator, div_ab.denominator
 (3, 5)
