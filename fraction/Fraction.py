@@ -1,7 +1,7 @@
 class Fraction:
     def __init__(self, numerator=0, denominator=1):
-        self.numerator = numerator
-        self.denominator = denominator
+        self.numerator = int(numerator)
+        self.denominator = int(denominator)
 
     def _gcd(self, num1, num2):
         if num2 == 0:
@@ -35,6 +35,9 @@ class Fraction:
 
     def __div__(self, other_fraction):
         return self.__mul__(Fraction.reciprocal(other_fraction))
+
+    def __truediv__(self, other_fraction):
+        return self.__div__(other_fraction)
 
     def __lt__(self, other_fraction):
         a_n, a_d, b_n, b_d = self.numerator, self.denominator, other_fraction.numerator, other_fraction.denominator
