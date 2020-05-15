@@ -2,7 +2,9 @@ class Fraction:
     def __init__(self, numerator=0, denominator=1):
         self.numerator = int(numerator)
         self.denominator = int(denominator)
-
+        self.is_normal = False
+    
+    
     def _gcd(self, num1, num2):
         if num2 == 0:
             return num1
@@ -69,8 +71,17 @@ class Fraction:
         denom_lcm = (a_d * b_d) / self._gcd(a_d, b_d)
         return True if a_n * (denom_lcm / a_d) != b_n * (denom_lcm / b_d) else False
 
+    def normalize(self):
+        if not self.is_normal:
+            g = self._gcd(self.numerator, self.denominator)
+            self.numerator = self.numerator // g
+            self.denominator = self.denominator // g
+            self.is_normal = True
+
     def __str__(self):
+        self.normalize()
         return '{}/{}'.format(self.numerator, self.denominator)
 
     def __repr__(self):
+        self.normalize()
         return 'Fraction: {}/{}'.format(self.numerator, self.denominator)
