@@ -9,7 +9,7 @@ $ sudo pip install Fraction
 ```
 ### Usage
 ```
->>> from fraction.Fraction import Fraction
+>>> from fraction import Fraction
 ```
 ##### Creates a fraction equal to 0/1
 ```
