@@ -1,12 +1,12 @@
 Metadata-Version: 2.1
 Name: Fraction
-Version: 1.2.0
+Version: 1.3.0
 Summary: Fraction carries out all the fraction operations including addition, subtraction, multiplication, division, reciprocation
 Home-page: https://github.com/bradley101/fraction
 Author: Shantanu Banerjee
 Author-email: hi@shantanubanerjee.com
 License: UNKNOWN
-Description: ## fraction  [![Github Pre-Releases](http://squiblab.com/total.svg)](https://pypi.python.org/pypi/Fraction/0.3)
+Description: ## fraction  ![PyPI - Downloads](https://img.shields.io/pypi/dm/fraction)
         
         fraction is a _Python_ module that is designed for fractional values **_numerator/denominator_**
         
@@ -17,7 +17,7 @@ Description: ## fraction  [![Github Pre-Releases](http://squiblab.com/total.svg)
         ```
         ### Usage
         ```
-        >>> from fraction.Fraction import Fraction
+        >>> from fraction import Fraction
         ```
         ##### Creates a fraction equal to 0/1
         ```
