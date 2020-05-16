@@ -1,6 +1,8 @@
 class Fraction:
     def __init__(self, numerator=0, denominator=1):
         self.numerator = int(numerator)
+        if (denominator == 0):
+            raise ZeroDivisionError()
         self.denominator = int(denominator)
         self.is_normal = False
     
@@ -85,3 +87,4 @@ class Fraction:
     def __repr__(self):
         self._normalize()
         return 'Fraction: {}/{}'.format(self.numerator, self.denominator)
+
