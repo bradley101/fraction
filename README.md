@@ -1,4 +1,4 @@
-## fraction  ![PyPI - Downloads](https://img.shields.io/pypi/dm/fraction)
+# fraction  ![PyPI - Downloads](https://img.shields.io/pypi/dm/fraction)
 
 fraction is a _Python_ module that is designed for fractional values **_numerator/denominator_**
 
