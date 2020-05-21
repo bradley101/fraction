@@ -86,5 +86,5 @@ class Fraction:
 
     def __repr__(self):
         self._normalize()
-        return 'Fraction: {}/{}'.format(self.numerator, self.denominator)
+        return 'Fraction({}/{})'.format(self.numerator, self.denominator)
 

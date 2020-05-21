@@ -1,12 +1,12 @@
 Metadata-Version: 2.1
 Name: Fraction
-Version: 1.4.0
+Version: 1.4.1
 Summary: Fraction carries out all the fraction operations including addition, subtraction, multiplication, division, reciprocation
 Home-page: https://github.com/bradley101/fraction
 Author: Shantanu Banerjee
 Author-email: hi@shantanubanerjee.com
 License: UNKNOWN
-Description: ## fraction  ![PyPI - Downloads](https://img.shields.io/pypi/dm/fraction)
+Description: # fraction  ![PyPI - Downloads](https://img.shields.io/pypi/dm/fraction)
         
         fraction is a _Python_ module that is designed for fractional values **_numerator/denominator_**
         

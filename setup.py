@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="Fraction", # Replace with your own username
-    version="1.4.0",
+    version="1.4.1",
     author="Shantanu Banerjee",
     author_email="hi@shantanubanerjee.com",
     description="Fraction carries out all the fraction operations including addition, subtraction, multiplication, division, reciprocation",
