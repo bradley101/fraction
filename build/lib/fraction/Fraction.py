@@ -1,9 +1,20 @@
 class Fraction:
     def __init__(self, numerator=0, denominator=1):
-        self.numerator = int(numerator)
-        if (denominator == 0):
-            raise ZeroDivisionError()
-        self.denominator = int(denominator)
+
+        if isinstance(numerator, Fraction) and isinstance(denominator, Fraction):
+            temp_fraction = numerator * Fraction.reciprocal(denominator)
+            self.numerator, self.denominator = temp_fraction.numerator, temp_fraction.denominator
+        elif isinstance(numerator, Fraction):
+            temp_fraction = numerator / Fraction(denominator)
+            self.numerator, self.denominator = temp_fraction.numerator, temp_fraction.denominator
+        elif isinstance(denominator, Fraction):
+            temp_fraction = Fraction(numerator) / denominator
+            self.numerator, self.denominator = temp_fraction.numerator, temp_fraction.denominator
+        else:
+            self.numerator = int(numerator)
+            if (denominator == 0):
+                raise ZeroDivisionError()
+            self.denominator = int(denominator)
         self.is_normal = False
     
     
