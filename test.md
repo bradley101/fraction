@@ -15,5 +15,11 @@ To run these tests, just do `python -m doctest test.md`.
 4/1
 >>> print(Fraction(a, 2))
 1/4
+>>> Fraction(1, 3).todecimal(decplaces=4)
+'0.3333'
+>>> print(Fraction.fromdecimal(0.3, rec='3'))
+1/3
+>>> print(Fraction.fromdecimal(24.87262, rec='7262'))
+1243507/49995
 
 ```

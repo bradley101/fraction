@@ -1,3 +1,5 @@
+from math import floor
+
 class Fraction:
     def __init__(self, numerator=0, denominator=1):
 
@@ -26,6 +28,34 @@ class Fraction:
     @staticmethod
     def reciprocal(fraction):
         return Fraction(fraction.denominator, fraction.numerator)
+
+    @staticmethod
+    def fromdecimal(num, rec=None):
+        _snum = str(num)
+        if rec is not None and '.' in _snum:
+            if not isinstance(rec, str):
+                raise Exception('Recurring part should be a string')
+            elif '.' in rec:
+                raise Exception('Recurring part should not contain decimal places')
+            elif not str.isdigit(rec):
+                raise Exception("Recurring part should only be a number")
+            elif rec not in _snum:
+                raise Exception('Recurring part not present in the number')
+            
+            _pow_tp = _snum.rfind(rec) - _snum.find('.') - 1
+            _nummbpowtp = int(num * (10 ** _pow_tp))
+            _nummbpowtpreclen = _nummbpowtp * (10 ** (len(rec))) + int(rec)
+            return Fraction(_nummbpowtpreclen - _nummbpowtp, 10 ** (len(rec) + _pow_tp) - (10 ** _pow_tp))
+        else:
+            dec_places = len(_snum[_snum.find('.') + 1])
+            return Fraction(num * (10 ** dec_places), 10 ** dec_places)
+
+    def todecimal(self, decplaces=3):
+        if decplaces < 0:
+            raise Exception('Number of decimal places cannot be negative')
+        elif int(decplaces) != int(floor(decplaces)):
+            raise Exception('Number of decimal places cannot be a decimal number')
+        return format(self.numerator / self.denominator, '.{}f'.format(decplaces))
         
     def __add__(self, other_fraction):
         a_n, a_d, b_n, b_d = self.numerator, self.denominator, other_fraction.numerator, other_fraction.denominator
