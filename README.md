@@ -5,30 +5,40 @@ fraction is a _Python_ module that is designed for fractional values **_numerato
 ### Installation
 Easy to install
 ```
-$ sudo pip install Fraction
+$ python -m pip install Fraction
 ```
 ### Usage
+#### Import
 ```
 >>> from fraction import Fraction
 ```
+#### Initialization
 ##### Creates a fraction equal to 0/1
 ```
->>> def_fraction = Fraction()
+>>> f1 = Fraction()
 ```
 ##### Creates a fraction equal to (1/2) / (1/4)
 ```
->>> print(Fraction(Fraction(1, 2), Fraction(1, 4)))
+>>> print(Fraction('1/2', '1/4'))
 2/1
+```
+##### Create fraction objects from strings and decimals
+```
+>>> print(Fraction('1.2'))
+6/5
+>>> print(Fraction('1.22/6'))
+61/300
 ```
 ##### Creates a fraction equal to 3/10
 ```
->>> a = Fraction(3, 10)
->>> b = Fraction(1, 2)
+>>> a = Fraction('3/10')
+>>> b = Fraction('1/2')
 
 # Get numerator/denominator
 >>> a.numerator, a.denominator
 (3, 10)
 ```
+### Arithmetic Operations
 ##### Computes reciprocal of fraction as Fraction object
 ```
 >>> recip_a = Fraction.reciprocal(a)
