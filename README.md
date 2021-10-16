@@ -77,6 +77,12 @@ True
 >>> a == Fraction(7, 10)
 False
 ```
+### Convert fraction into a float string
+```
+>>> a = Fraction('1/3')
+>>> a.todecimal(decplaces=5)
+'0.33333'
+```
 ### For debugging 
 ##### Supports str() and repr() built in objects methods
 ```
