@@ -21,5 +21,6 @@ To run these tests, just do `python -m doctest test.md`.
 1/3
 >>> print(Fraction.fromdecimal(24.87262, rec='7262'))
 1243507/49995
-
+>>> print(Fraction(1.2))
+6/5
 ```

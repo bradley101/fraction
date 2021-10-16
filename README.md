@@ -17,7 +17,7 @@ $ sudo pip install Fraction
 ```
 ##### Creates a fraction equal to (1/2) / (1/4)
 ```
->>> print(Fraction(1, 2), Fraction(1, 4))
+>>> print(Fraction(Fraction(1, 2), Fraction(1, 4)))
 2/1
 ```
 ##### Creates a fraction equal to 3/10
