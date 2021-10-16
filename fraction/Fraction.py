@@ -50,7 +50,7 @@ class Fraction:
     def _getfractionfromstr(num: str):
         f = None
         num = num.strip()
-        isslashpresent, slashcount = num.find('/'), num.count('/')
+        slashcount = num.count('/')
         if slashcount > 1:
             raise FractionException("Invalid fraction")
         elif slashcount == 1:
