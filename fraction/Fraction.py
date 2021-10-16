@@ -3,6 +3,7 @@ from re import match
 
 REAL_NUM_REGEX = "^[+-]?(?:\d+\.?\d*|\d*\.\d+)$"
 
+
 class Fraction:
     def __init__(self, numerator=0, denominator=1):
         def handleparams(param):
@@ -17,9 +18,10 @@ class Fraction:
                 p = Fraction.fromdecimal(param)
             else:
                 raise FractionException("{} is not compatible"
-                    "as a numerator or denominator".format(param))
+                                        "as a numerator or denominator"
+                                        .format(param))
             return p
-        
+
         x, y = None, None
         if isinstance(numerator, int):
             self.numerator = numerator
@@ -45,7 +47,7 @@ class Fraction:
         self.is_normal = False
 
     @staticmethod
-    def _getfractionfromstr(num : str):
+    def _getfractionfromstr(num: str):
         f = None
         num = num.strip()
         isslashpresent, slashcount = num.find('/'), num.count('/')
@@ -53,18 +55,19 @@ class Fraction:
             raise FractionException("Invalid fraction")
         elif slashcount == 1:
             x, y = num.split('/')
-            if [bool(match(REAL_NUM_REGEX, x1)) for x1 in [x, y]] == [True, True]:
+            if [bool(match(REAL_NUM_REGEX, x1))
+                    for x1 in [x, y]] == [True, True]:
                 f = Fraction(x, y)
             else:
-                raise FractionException("Numerator or Denominator is not a number")
+                raise FractionException(
+                    "Numerator or Denominator is not a number")
         else:
             if bool(match(REAL_NUM_REGEX, num)):
                 f = Fraction(float(num))
             else:
                 raise FractionException("Invalid number")
         return f
-    
-    
+
     def _gcd(self, num1, num2):
         if num2 == 0:
             return num1
@@ -81,16 +84,20 @@ class Fraction:
             if not isinstance(rec, str):
                 raise FractionException('Recurring part should be a string')
             elif '.' in rec:
-                raise FractionException('Recurring part should not contain decimal places')
+                raise FractionException(
+                    'Recurring part should not contain decimal places')
             elif not str.isdigit(rec):
-                raise FractionException("Recurring part should only be a number")
+                raise FractionException(
+                    "Recurring part should only be a number")
             elif rec not in _snum:
-                raise FractionException('Recurring part not present in the number')
-            
+                raise FractionException(
+                    'Recurring part not present in the number')
+
             _pow_tp = _snum.rfind(rec) - _snum.find('.') - 1
             _nummbpowtp = int(num * (10 ** _pow_tp))
             _nummbpowtpreclen = _nummbpowtp * (10 ** (len(rec))) + int(rec)
-            return Fraction(_nummbpowtpreclen - _nummbpowtp, 10 ** (len(rec) + _pow_tp) - (10 ** _pow_tp))
+            return Fraction(_nummbpowtpreclen - _nummbpowtp,
+                            10 ** (len(rec) + _pow_tp) - (10 ** _pow_tp))
         else:
             dec_places = len(_snum[_snum.find('.') + 1:])
             return Fraction(int(num * (10 ** dec_places)), 10 ** dec_places)
@@ -99,29 +106,37 @@ class Fraction:
         if decplaces < 0:
             raise Exception('Number of decimal places cannot be negative')
         elif int(decplaces) != int(floor(decplaces)):
-            raise Exception('Number of decimal places cannot be a decimal number')
-        return format(self.numerator / self.denominator, '.{}f'.format(decplaces))
-        
+            raise Exception(
+                'Number of decimal places cannot be a decimal number')
+        return format(self.numerator / self.denominator,
+                      '.{}f'.format(decplaces))
+
     def __add__(self, other_fraction):
-        a_n, a_d, b_n, b_d = self.numerator, self.denominator, other_fraction.numerator, other_fraction.denominator
+        a_n, a_d, b_n, b_d = self.numerator, self.denominator, \
+            other_fraction.numerator, other_fraction.denominator
         denom_lcm = (a_d * b_d) / self._gcd(a_d, b_d)
         new_numerator = ((denom_lcm / a_d) * a_n) + ((denom_lcm / b_d) * b_n)
         reduced_frac_gcd = self._gcd(new_numerator, denom_lcm)
-        return Fraction(new_numerator / reduced_frac_gcd, denom_lcm / reduced_frac_gcd)
+        return Fraction(new_numerator / reduced_frac_gcd,
+                        denom_lcm / reduced_frac_gcd)
 
     def __sub__(self, other_fraction):
-        a_n, a_d, b_n, b_d = self.numerator, self.denominator, other_fraction.numerator, other_fraction.denominator
+        a_n, a_d, b_n, b_d = self.numerator, self.denominator, \
+            other_fraction.numerator, other_fraction.denominator
         denom_lcm = (a_d * b_d) / self._gcd(a_d, b_d)
         new_numerator = ((denom_lcm / a_d) * a_n) - ((denom_lcm / b_d) * b_n)
         reduced_frac_gcd = self._gcd(new_numerator, denom_lcm)
-        return Fraction(new_numerator / reduced_frac_gcd, denom_lcm / reduced_frac_gcd)
+        return Fraction(new_numerator / reduced_frac_gcd,
+                        denom_lcm / reduced_frac_gcd)
 
     def __mul__(self, other_fraction):
-        a_n, a_d, b_n, b_d = self.numerator, self.denominator, other_fraction.numerator, other_fraction.denominator
+        a_n, a_d, b_n, b_d = self.numerator, self.denominator, \
+            other_fraction.numerator, other_fraction.denominator
         denom_lcm = a_d * b_d
         new_numerator = a_n * b_n
         reduced_frac_gcd = self._gcd(new_numerator, denom_lcm)
-        return Fraction(int(new_numerator / reduced_frac_gcd), int(denom_lcm / reduced_frac_gcd))
+        return Fraction(int(new_numerator / reduced_frac_gcd),
+                        int(denom_lcm / reduced_frac_gcd))
 
     def __div__(self, other_fraction):
         return self.__mul__(Fraction.reciprocal(other_fraction))
@@ -130,29 +145,39 @@ class Fraction:
         return self.__div__(other_fraction)
 
     def __lt__(self, other_fraction):
-        a_n, a_d, b_n, b_d = self.numerator, self.denominator, other_fraction.numerator, other_fraction.denominator
+        a_n, a_d, b_n, b_d = self.numerator, self.denominator, \
+            other_fraction.numerator, other_fraction.denominator
         denom_lcm = (a_d * b_d) / self._gcd(a_d, b_d)
-        return True if a_n * (denom_lcm / a_d) < b_n * (denom_lcm / b_d) else False
+        return True if a_n * (denom_lcm / a_d) < b_n * \
+            (denom_lcm / b_d) else False
 
     def __gt__(self, other_fraction):
-        a_n, a_d, b_n, b_d = self.numerator, self.denominator, other_fraction.numerator, other_fraction.denominator
+        a_n, a_d, b_n, b_d = self.numerator, self.denominator, \
+            other_fraction.numerator, other_fraction.denominator
         denom_lcm = (a_d * b_d) / self._gcd(a_d, b_d)
-        return True if a_n * (denom_lcm / a_d) > b_n * (denom_lcm / b_d) else False
+        return True if a_n * (denom_lcm / a_d) > b_n * \
+            (denom_lcm / b_d) else False
 
     def __le__(self, other_fraction):
-        a_n, a_d, b_n, b_d = self.numerator, self.denominator, other_fraction.numerator, other_fraction.denominator
+        a_n, a_d, b_n, b_d = self.numerator, self.denominator, \
+            other_fraction.numerator, other_fraction.denominator
         denom_lcm = (a_d * b_d) / self._gcd(a_d, b_d)
-        return True if a_n * (denom_lcm / a_d) <= b_n * (denom_lcm / b_d) else False
+        return True if a_n * (denom_lcm / a_d) <= b_n * \
+            (denom_lcm / b_d) else False
 
     def __ge__(self, other_fraction):
-        a_n, a_d, b_n, b_d = self.numerator, self.denominator, other_fraction.numerator, other_fraction.denominator
+        a_n, a_d, b_n, b_d = self.numerator, self.denominator, \
+            other_fraction.numerator, other_fraction.denominator
         denom_lcm = (a_d * b_d) / self._gcd(a_d, b_d)
-        return True if a_n * (denom_lcm / a_d) >= b_n * (denom_lcm / b_d) else False
+        return True if a_n * (denom_lcm / a_d) >= b_n * \
+            (denom_lcm / b_d) else False
 
     def __eq__(self, other_fraction):
-        a_n, a_d, b_n, b_d = self.numerator, self.denominator, other_fraction.numerator, other_fraction.denominator
+        a_n, a_d, b_n, b_d = self.numerator, self.denominator, \
+            other_fraction.numerator, other_fraction.denominator
         denom_lcm = (a_d * b_d) / self._gcd(a_d, b_d)
-        return True if a_n * (denom_lcm / a_d) == b_n * (denom_lcm / b_d) else False
+        return True if a_n * (denom_lcm / a_d) == b_n * \
+            (denom_lcm / b_d) else False
 
     def __ne__(self, other_fraction):
         return not self.__eq__(other_fraction)
