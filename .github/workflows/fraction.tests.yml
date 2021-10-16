@@ -23,7 +23,7 @@ jobs:
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
-        flake8 Fraction.py --per-file-ignores="fraction/Fraction.py:W605"
+        flake8 fraction/Fraction.py --per-file-ignores="fraction/Fraction.py:W605"
     - name: Test using test.py
       run: |
         python -m unittest -v test.py
