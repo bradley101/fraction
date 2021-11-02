@@ -29,6 +29,15 @@ $ python -m pip install Fraction
 >>> print(Fraction('1.22/6'))
 61/300
 ```
+##### Create fraction objects from recurring decimals
+```
+>>> f = Fraction.fromdecimal(1.3, rec='3')
+>>> print(f)
+4/3
+>>> f = Fraction.fromdecimal(24.5067, rec='067')
+>>> print(f)
+122411/4995
+```
 ##### Creates a fraction equal to 3/10
 ```
 >>> a = Fraction('3/10')

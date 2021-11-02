@@ -79,8 +79,8 @@ class Fraction:
 
     @staticmethod
     def fromdecimal(num, rec=None):
-        _snum = str(num)
-        if rec is not None and '.' in _snum:
+        _snum = str(float(num))
+        if rec is not None:
             if not isinstance(rec, str):
                 raise FractionException('Recurring part should be a string')
             elif '.' in rec:
@@ -92,6 +92,9 @@ class Fraction:
             elif rec not in _snum:
                 raise FractionException(
                     'Recurring part not present in the number')
+            elif not _snum.endswith(rec):
+                raise FractionException(
+                    "Number should end with the recurring part")
 
             _pow_tp = _snum.rfind(rec) - _snum.find('.') - 1
             _nummbpowtp = int(num * (10 ** _pow_tp))
