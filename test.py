@@ -284,6 +284,22 @@ class FractionTests(unittest.TestCase):
     def test36(self):
         f1 = Fraction.fromdecimal(24.5067, rec='067')
         self.assertEqual(str(f1), '122411/4995')
+    
+    def test37(self):
+        f1 = Fraction.fromdecimal(2.01)
+        self.assertEqual(str(f1), '201/100')
+    
+    def test38(self):
+        f1 = Fraction.fromdecimal(2.03)
+        self.assertEqual(str(f1), '203/100')
+    
+    def test39(self):
+        f1 = Fraction.fromdecimal(2.05)
+        self.assertEqual(str(f1), '41/20')
+    
+    def test40(self):
+        f1 = Fraction.fromdecimal(2.07)
+        self.assertEqual(str(f1), '207/100')
 
 
 if __name__ == "__main__":

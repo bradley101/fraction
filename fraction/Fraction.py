@@ -103,7 +103,8 @@ class Fraction:
                             10 ** (len(rec) + _pow_tp) - (10 ** _pow_tp))
         else:
             dec_places = len(_snum[_snum.find('.') + 1:])
-            return Fraction(int(num * (10 ** dec_places)), 10 ** dec_places)
+            return Fraction(int(round(num * (10 ** dec_places))),
+                            10 ** dec_places)
 
     def todecimal(self, decplaces=3):
         if decplaces < 0:
