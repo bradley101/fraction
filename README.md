@@ -1,4 +1,4 @@
-# fraction  [![Downloads](https://pepy.tech/badge/fraction/week)](https://pepy.tech/project/fraction)
+# fraction  [![Downloads](https://static.pepy.tech/personalized-badge/fraction?period=total&units=international_system&left_color=orange&right_color=green&left_text=Total%20Downloads)](https://pepy.tech/project/fraction)
 
 fraction is a _Python_ module that is designed for fractional values **_numerator/denominator_**
 
