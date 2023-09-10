@@ -300,6 +300,30 @@ class FractionTests(unittest.TestCase):
     def test40(self):
         f1 = Fraction.fromdecimal(2.07)
         self.assertEqual(str(f1), '207/100')
+    
+    def test41(self):
+        f1 = Fraction('1/2')
+        f2 = Fraction('1/3')
+        f2 += f1
+        self.assertEqual(str(f2), '5/6')
+    
+    def test42(self):
+        f1 = Fraction('1/2')
+        f2 = Fraction('1/3')
+        f2 -= f1
+        self.assertEqual(str(f2), '-1/6')
+    
+    def test43(self):
+        f1 = Fraction('1/2')
+        f2 = Fraction('1/3')
+        f2 *= f1
+        self.assertEqual(str(f2), '1/6')
+    
+    def test44(self):
+        f1 = Fraction('1/2')
+        f2 = Fraction('1/3')
+        f2 /= f1
+        self.assertEqual(str(f2), '2/3')
 
 
 if __name__ == "__main__":
