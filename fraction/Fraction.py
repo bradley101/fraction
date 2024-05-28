@@ -1,5 +1,4 @@
 from math import floor
-from numbers import Rational
 from re import match
 
 REAL_NUM_REGEX = "^[+-]?(?:\d+\.?\d*|\d*\.\d+)$"
@@ -197,14 +196,16 @@ class Fraction:
     def __repr__(self):
         self._normalize()
         return 'Fraction({}/{})'.format(self.numerator, self.denominator)
-    
+
     def __pow__(self, power):
         if not (isinstance(power, int) or isinstance(power, float)):
             raise FractionException('Invalid exponent given')
-        
+
         power_frac = Fraction(power)
-        res_num = (self.numerator ** power_frac.numerator) ** (1.0 / power_frac.denominator)
-        res_den = (self.denominator ** power_frac.numerator) ** (1.0 / power_frac.denominator)
+        res_num = (self.numerator ** power_frac.numerator) \
+            ** (1.0 / power_frac.denominator)
+        res_den = (self.denominator ** power_frac.numerator) \
+            ** (1.0 / power_frac.denominator)
         return Fraction(res_num, res_den)
 
 
