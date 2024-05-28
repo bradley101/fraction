@@ -4,8 +4,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="Fraction", # Replace with your own username
-    version="2.2.1",
+    name="Fraction",
+    version="2.2.2",
     author="Shantanu Banerjee",
     author_email="hi@shantanubanerjee.com",
     description="Fraction carries out all the fraction operations including addition, subtraction, multiplication, division, reciprocation",

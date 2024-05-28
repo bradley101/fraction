@@ -126,13 +126,9 @@ class Fraction:
                         denom_lcm / reduced_frac_gcd)
 
     def __sub__(self, other_fraction):
-        a_n, a_d, b_n, b_d = self.numerator, self.denominator, \
-            other_fraction.numerator, other_fraction.denominator
-        denom_lcm = (a_d * b_d) / self._gcd(a_d, b_d)
-        new_numerator = ((denom_lcm / a_d) * a_n) - ((denom_lcm / b_d) * b_n)
-        reduced_frac_gcd = self._gcd(new_numerator, denom_lcm)
-        return Fraction(new_numerator / reduced_frac_gcd,
-                        denom_lcm / reduced_frac_gcd)
+        other = other_fraction
+        other.numerator *= -1
+        return self + other
 
     def __mul__(self, other_fraction):
         a_n, a_d, b_n, b_d = self.numerator, self.denominator, \
@@ -210,7 +206,7 @@ class Fraction:
         res_num = (self.numerator ** power_frac.numerator) ** (1.0 / power_frac.denominator)
         res_den = (self.denominator ** power_frac.numerator) ** (1.0 / power_frac.denominator)
         return Fraction(res_num, res_den)
-            
+
 
 class FractionException(Exception):
     def __init__(self, *args: object) -> None:
